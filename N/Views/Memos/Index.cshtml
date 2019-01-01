@@ -1,0 +1,49 @@
+﻿@model IEnumerable<N.Models.Memo>
+
+@{
+    ViewData["Title"] = "Memo";
+}
+<br />
+<td>
+    <a asp-area="" asp-controller="Memos" asp-action="Index">Memo列表</a> |
+    <a asp-area="" asp-controller="States" asp-action="Index">人員狀態</a>
+</td>
+<h2>Memo</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Empid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Memos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Memos)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Empid">詳細資料</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Empid">刪除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

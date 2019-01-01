@@ -1,0 +1,60 @@
+﻿@model IEnumerable<N.Models.Shift>
+
+@{
+    ViewData["Title"] = "班表";
+}
+
+<h2>班表</h2>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            以日期搜尋：<input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="搜尋" class="btn btn-default" /> |
+            <a asp-action="Index">查看當月完整班表</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Early)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lnig)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bnig)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Early)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lnig)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bnig)
+            </td>          
+        </tr>
+}
+    </tbody>
+</table>
